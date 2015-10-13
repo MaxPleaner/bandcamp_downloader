@@ -4,7 +4,8 @@ Uses Curl and Ruby. This bypass the paywall ... and if it makes you feel bad, do
 
 Dependencies:
   - depends on `mechanize` and `colored`. Install them using `bundle`.
-  - `pry` or `byebug` dependencies might be in the source code during development. `byebug` require Ruby 2+.
+  - `pry` or `byebug` dependencies might be in the source code during development, but any references to them can be removed. They are just for 
+    debugging. `byebug` require Ruby 2+.
 
 To use the CLI script:
   - `require` the program (from irb or another file) to load the BandcampDownloader class without executing anything.
