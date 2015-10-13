@@ -2,9 +2,14 @@
 
 Uses Curl and Ruby. This bypass the paywall ... and if it makes you feel bad, don't do it. 
 
-To use the CLI script:
+Dependencies:
+  - depends on `mechanize` and `colored`. Install them using `bundle`.
+  - `pry` or `byebug` dependencies might be in the source code during development. `byebug` require Ruby 2+.
 
-  - run the program with `ruby bandcamp_downloader.rb <url>`  
+To use the CLI script:
+  - `require` the program (from irb or another file) to load the BandcampDownloader class without executing anything.
+  - run the program with no arguments to be prompted for a url
+  - run the program with a url argument to download mp3s from the url
       - i.e. `ruby bandcamp_downloader.rb http://fullemployment.bandcamp.com` (one of my bands).
   - the files will be downloaded into whatever directory the scripwt was called from.  
       - i.e. if I call `ruby scripts/bandcamp_downloade.rb <url>` from `~/Downloads` then the files will be downloaded to `~/Downloads`. 
