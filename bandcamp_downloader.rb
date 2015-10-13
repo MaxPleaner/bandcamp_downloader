@@ -10,7 +10,8 @@ class BandcampDownloader
   end
 
   def self.begin
-    url         = ARGV.shift.gsub("https", "http"); require_url(url)
+    puts "enter url".green
+    url         = gets.chomp.gsub("https", "http"); require_url(url)
     puts "downloading index".green
     text        = `curl #{url}`
     links       = get_links(text)
@@ -28,7 +29,7 @@ class BandcampDownloader
     begin 
       `mkdir #{output_folder}`
     rescue
-      puts "Error making folder #{output_folder}. Does it already exist?"
+      puts "Error making folder #{output_folder}. Does it already exist?".red
       exit
     end
   end
@@ -38,17 +39,15 @@ class BandcampDownloader
   def self.get_links(text)
     links = text.scan(LINKS_REGEX)
     unless links
-      puts "No track links were found. Make sure to enter the url" +
-           "of the stream page, not the album selection page"
+      puts "No track links were found. Make sure to enter the url ".red +
+           "of the stream page, not the album selection page".red
       exit
     end
     links.map { |link| URI.parse("http://" + link) }
   end
   def self.require_url(url)
     unless url
-      puts "Must specify URL as first command line argument" +
-           "i.e. 'ruby bandcamp_downloader.rb" +
-           "http://fullemployment.bandcamp.com'"
+      puts "no url given".red
       exit
     end
   end
