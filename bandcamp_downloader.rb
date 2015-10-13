@@ -1,29 +1,32 @@
-require 'byebug'
 require 'mechanize'
 require 'colored'
-
+require 'byebug'
 class BandcampDownloader
   LINKS_REGEX = /poppler[^\"\{\}]+/
   @@mechanize = Mechanize.new.tap do |agent|
     agent.keep_alive = false
     agent.idle_timeout = 300 # allow 5 minutes to download each track
   end
-
-  def self.begin
+  def self.get_url
     puts "enter url".green
-    url         = gets.chomp.gsub("https", "http"); require_url(url)
+    url = gets.chomp.gsub("https", "http")
+  end
+  def self.begin(url)
     puts "downloading index".green
-    text        = `curl #{url}`
-    links       = get_links(text)
-    artist_name = url.scan(/http\:\/\/(.+)\.bandcamp\.com/).flatten.first
-
-    puts "found #{links.length} link(s)".green
-    links.each_with_index do |link, index|
-      filename = "#{artist_name}-#{SecureRandom.uuid}.mp3"
+    index_text = `curl #{url}`
+    download_links({
+      links: get_links(index_text),
+      artist_name: url.scan(/http\:\/\/(.+)\.bandcamp\.com/).flatten.first
+    })
+    puts "done".green
+  end
+  def self.download_links(options)
+    puts "found #{options[:links].length} link(s)".green
+    options[:links].each_with_index do |link, index|
+      filename = "#{options[:artist_name]}-#{SecureRandom.uuid}.mp3"
       puts "downloading track #{index + 1}".green
       download_link(link, filename)
     end
-    puts "done".green
   end
   def self.make_output_folder(output_folder)
     begin 
@@ -37,6 +40,7 @@ class BandcampDownloader
     @@mechanize.get(link).save_as(filename)
   end
   def self.get_links(text)
+    byebug
     links = text.scan(LINKS_REGEX)
     unless links
       puts "No track links were found. Make sure to enter the url ".red +
@@ -45,13 +49,12 @@ class BandcampDownloader
     end
     links.map { |link| URI.parse("http://" + link) }
   end
-  def self.require_url(url)
-    unless url
-      puts "no url given".red
-      exit
-    end
-  end
 end
+
 if $0 == __FILE__
-  BandcampDownloader.begin
+  if (url = ARGV.shift)
+    BandcampDownloader.begin(url)
+  else
+    BandcampDownloader.begin(BandcampDownloader.get_url)
+  end
 end
