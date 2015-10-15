@@ -1,6 +1,6 @@
 ### Bandcamp Downloader
 
-Uses Curl and Ruby. This bypass the paywall ... and if it makes you feel bad, don't do it. 
+This bypass the paywall ... and if it makes you feel bad, don't do it. 
 
 Dependencies:
   - depends on `mechanize` and `colored`. Install them using `bundle`.
