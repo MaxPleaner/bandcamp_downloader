@@ -1,6 +1,6 @@
 ### Bandcamp Downloader
 
-This bypass the paywall ... and if it makes you feel bad, don't do it. 
+This bypass the paywall ... sorry artists. 
 
 Dependencies:
   - depends on `mechanize` and `colored`. Install them using `bundle`.
