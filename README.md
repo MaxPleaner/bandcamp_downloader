@@ -16,4 +16,6 @@ To use the CLI script:
       - i.e. if I call `ruby scripts/bandcamp_downloade.rb <url>` from `~/Downloads` then the files will be downloaded to `~/Downloads`. 
   - Unfortunately, the names of the tracks aren't included with the download. I might try and fix this. 
              
-
+             
+- When installing this program to a new machine I create a `band` alias so that I can download albums
+- with `band <album` from the terminal.
