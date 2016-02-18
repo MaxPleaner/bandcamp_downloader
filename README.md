@@ -1,7 +1,5 @@
 ### Bandcamp Downloader
 
-This bypass the paywall ... sorry artists. 
-
 Dependencies:
   - depends on `mechanize` and `colored`. Install them using `bundle`.
   - `pry` or `byebug` dependencies might be in the source code during development, but any references to them can be removed. They are just for 
@@ -15,7 +13,6 @@ To use the CLI script:
   - the files will be downloaded into whatever directory the scripwt was called from.  
       - i.e. if I call `ruby scripts/bandcamp_downloade.rb <url>` from `~/Downloads` then the files will be downloaded to `~/Downloads`. 
   - Unfortunately, the names of the tracks aren't included with the download. I might try and fix this. 
-             
              
 - When installing this program to a new machine I create a `band` alias so that I can download albums
 - with `band <album` from the terminal.
