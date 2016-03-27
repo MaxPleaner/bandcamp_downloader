@@ -4,8 +4,6 @@ Tested with Ruby 1.9.3 and Ruby 2.4.0
 
 Dependencies:
   - depends on `mechanize` and `colored` gems being installed.
-  - `pry` or `byebug` dependencies might be in the source code during development, but any references to them can be removed. They are just for 
-    debugging. `byebug` require Ruby 2+
 
 To use the CLI script:
   - `require` the program (from irb or another file) to load the BandcampDownloader class without executing anything.
