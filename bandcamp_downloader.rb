@@ -1,6 +1,6 @@
 require 'mechanize'
 require 'colored'
-require 'byebug'
+require 'pry'
 class BandcampDownloader
   LINKS_REGEX = /poppler[^\"\{\}]+/
   @@mechanize = Mechanize.new.tap do |agent|
@@ -40,7 +40,6 @@ class BandcampDownloader
     @@mechanize.get(link).save_as(filename)
   end
   def self.get_links(text)
-#    byebug
     links = text.scan(LINKS_REGEX)
     unless links
       puts "No track links were found. Make sure to enter the url ".red +
