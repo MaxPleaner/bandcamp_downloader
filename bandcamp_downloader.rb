@@ -1,6 +1,5 @@
 require 'mechanize'
 require 'colored'
-require 'pry'
 class BandcampDownloader
   LINKS_REGEX = /poppler[^\"\{\}]+/
   @@mechanize = Mechanize.new.tap do |agent|
