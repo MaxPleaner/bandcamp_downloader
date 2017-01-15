@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'mechanize'
 require 'colored'
 class BandcampDownloader
