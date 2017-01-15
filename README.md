@@ -1,19 +1,31 @@
 ### Bandcamp Downloader
 
-Tested with Ruby 1.9.3 and Ruby 2.4.0
+This is a command line utility to download songs off of bandcamp.
 
-Dependencies:
-  - depends on `mechanize` and `colored` gems being installed.
+It it written in Ruby, but is not gemmified.
 
-To use the CLI script:
-  - `require` the program (from irb or another file) to load the BandcampDownloader class without executing anything.
-  - run the program with no arguments to be prompted for a url
-  - run the program with a url argument to download mp3s from the url
-      - i.e. `ruby bandcamp_downloader.rb http://fullemployment.bandcamp.com` (one of my bands).
-  - the files will be downloaded into whatever directory the scripwt was called from.  
-      - i.e. if I call `ruby scripts/bandcamp_downloade.rb <url>` from `~/Downloads` then the files will be downloaded to `~/Downloads`. 
-  - Unfortunately, the names of the tracks aren't included with the download. I might try and fix this. The files
-    include the album/band name though. 
-             
-- When installing this program to a new machine I create a `band` alias so that I can download albums
-- with `band <album>` from the terminal.
+**To use**:
+
+Step 1. _move the executable to the PATH_:
+
+```sh
+  gem install mechanize colored
+  git clone https://github.com/maxpleaner/bandcamp_downloader
+  cd bandcamp_downloader
+  chmod a+x bandcamp_downloader.rb
+  sudo mv bandcamp_downloader.rb /usr/local/sbin
+```
+
+Step 2. _run script_
+
+```sh
+  bandcamp_downloader.rb <url>
+```
+
+This downloads the files to the current directory.
+I didn't get around to naming the files according to the song names on the site,
+but the metadata of the files is preserved and will show up in itunes/rhythmbox/etc.
+
+You can also run `ruby_downloader.rb` with no arguments and be prompted for a url.
+
+I have this aliased as `band <url`
