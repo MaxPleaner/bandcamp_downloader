@@ -28,4 +28,4 @@ but the metadata of the files is preserved and will show up in itunes/rhythmbox/
 
 You can also run `ruby_downloader.rb` with no arguments and be prompted for a url.
 
-I have this aliased as `band <url`
+I have this aliased as `band <url>`
