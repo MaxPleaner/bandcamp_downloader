@@ -10,7 +10,9 @@ class BandcampDownloader
   end
   def self.get_url
     puts "enter url".green
-    url = gets.chomp.gsub("https", "http")
+    if url[0..4] == "https"
+      url[0..4] = "http"
+    end
   end
   def self.begin(url)
     puts "downloading index".green
